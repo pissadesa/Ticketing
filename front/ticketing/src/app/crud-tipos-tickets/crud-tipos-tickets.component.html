@@ -1,0 +1,25 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorTipostickets">
+    <h2>Tipo de tickets</h2>
+    
+    <label>Tipo de tickets: </label><input class="form-control"[(ngModel)]="nombreTipo" placeholder="tipo de tiket" >
+    <br>
+  
+    <button (click)="insertarTicket()" class="btnNuevaPersona" mat-raised-button color="primary">Guardar</button>
+    
+    <button class="btnSalir" (click)="btnSalir()" mat-raised-button >Cancelar</button>
+    <br><br>
+    <table  class="table table-striped table-responsive-md btn-table">
+        <colgroup>
+            <col span="1" style="width: 50%;">
+         </colgroup>
+        <tr>
+            <th  class="thNombre">Nombre</th>
+        </tr>
+        <tbody>
+    <tr *ngFor="let tipo of arrayTipos">
+                <td class="thIzquierda">{{tipo.nombre}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

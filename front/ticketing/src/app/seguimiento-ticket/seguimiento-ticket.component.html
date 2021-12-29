@@ -1,0 +1,378 @@
+
+ <app-menu-lateral></app-menu-lateral>
+<div class="divContenedorSeguimiento">
+    <h2 style="margin-left: 1%;">Seguimiento</h2>
+    <div class="divMainSeguimiento">
+        
+        <div class="divDerechoSeguimiento">
+         
+            <div class="divDatosGeneralesSeguimiento">
+                <label class="labelTitulosSeguimiento">Datos generales</label>
+                <div style="padding: 1%;">
+                    <label>Creado por: {{nombreCreador}}</label><br>
+                    <label>Fecha de creación: {{fechaCreacion}}</label><br>
+                    <label>Asunto: </label>
+                    <input (change)="cambioAsunto()" [ngStyle]="{'background-color': asuntoguardado === '1' ? 'white' : 'rgba(255, 0, 0, 0.2)' }"  class="form-control" [(ngModel)]="asunto">
+                  <br>
+                <label>Folio:</label>
+                <label  class="form-control">{{folio}}</label><br>
+                    <br>
+                    <label>Descripción: </label>
+                    <textarea readonly  rows="5" class="form-control">{{descripcion}}</textarea>
+                  <br>
+
+
+                <label>Proyecto:</label>
+                <label  class="form-control">{{nombreProyecto}}</label><br>
+                
+                <label>Tipo de ticket:</label>
+                <label  class="form-control">{{tipoTicket}}</label><br>
+
+                <label>Prioridad:</label>
+                <select (change)="cambioPrioridad(content3)" class="form-control" [(ngModel)]="prioridad" [ngStyle]="{'background-color': prioridadguardado === '1' ? 'white' : 'rgba(255, 0, 0, 0.2)' }" >
+                    <option [value]="1">Bajo</option>
+                    <option [value]="2">Medio</option>
+                    <option [value]="3">Alto</option>
+                    <option [value]="4">Incidente mayor</option>
+                </select>
+                <br>       
+                <label>Estatus: </label>
+                <select  (change)="cambioEstatus()" [ngStyle]="{'background-color': estatusGuardado === '1' ? 'white' : 'rgba(255, 0, 0, 0.2)' }" class="form-control" [(ngModel)]="estatusSelected">
+                    <option *ngFor="let estatus of  arrayEstatus" [value]="estatus.value" >{{estatus.nombre}}</option>
+                </select>
+                <br>
+                <label>Asignado a:</label>
+                <label class="form-control">{{nombreAgente}}</label>
+               <br>
+                <label>Asignar/Reasignar:</label>
+                
+                <select (ngModelChange)="cambioAsignado()" [ngStyle]="{'background-color': asignadoGuardado === '1' ? 'white' : 'rgba(255, 0, 0, 0.2)' }"  class="form-control" [(ngModel)]="idAgenteSelected">
+                    <option *ngFor="let agente of arrayShow" [value]="agente.id">{{agente.nombre}} - {{agente.nombreTipo}}</option>
+                </select>
+                <mat-slide-toggle (ngModelChange)="cambioSwitch()" [(ngModel)]="tipoAsignado"  class="switch" color="primary">Flotantes</mat-slide-toggle>
+
+                <br>
+                <br>
+                <button  mat-raised-button color="primary" (click)="open(content, content2)">Guardar</button>
+                <button class="btnSalir" (click)="btnSalir()" mat-raised-button >Cancelar</button><br>
+
+
+                </div>
+            </div>
+        <br><br>
+    </div>
+        
+        <div class="divIzquierdoSeguimiento">
+            <div class="divDatosGeneralesSeguimiento">
+                <label class="labelTitulosSeguimiento">Notas</label>
+                <div style="padding: 1%;">
+                    <label>Nueva nota: </label><br>
+                    <label>Tipo de nota:</label>
+                    <select  class="form-control" [(ngModel)]="tipoSelected">
+                        <option [value]="0">Privada</option>
+                        <option [value]="1">Pública</option>
+                    </select>
+                   
+                    <br>
+                    <textarea [(ngModel)]="nuevaNota" rows="5" class="textAreaNota"></textarea>
+                    <button class="btnguardarNota"  mat-raised-button color="primary" (click)="agregarNota()">Guardar nota</button>
+
+                    <br>
+                    <br>
+        
+                    <div id="div2">
+          
+                        <table class="table table-striped table-responsive-md btn-table">
+                            <colgroup>
+                                <col span="1" style="width: 85%;">
+                                <col span="1" style="width: 15%;">
+                             </colgroup>
+                        
+                            <tbody>
+                                <tr *ngFor="let nota of arrayNotas" >
+                                    <td>
+                                        <label class="labelfechaNota">Tipo:  {{nota.tipo}}</label>
+                                        <label class="labelTipoNota">Fecha: {{nota.fecha}} </label><br>
+                                       <textarea  maxlength="100" readonly rows="6" class="form-control"> {{nota.nota}}</textarea>
+                                    </td>
+                                    <td>
+                                        <button  *ngIf="nota.creadaAgente == 0" (click)="eliminarNota(nota)" class="btnSalir" mat-raised-button>
+                                            Eliminar
+                                          </button>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        
+                        
+                    </div>
+        
+                </div>
+            </div>
+
+            
+            <br>
+            <br>
+        </div>
+
+    </div>
+
+    <div class="divEvidenciasSeguimiento">
+         <label class="labelTitulosSeguimiento">Evidencias</label>
+            <div style="padding: 1%;">
+
+                <div class="form-group btnDerecha">
+               
+                    <input name="uf" id="uf" type="file"
+                        
+                           multiple="true"  
+                           (change)="listaDeArchivos($event)"
+                           accept="image/*,.pdf"
+                           >
+                     <label>Subir evidencias:</label><br>   
+                     
+                     <div class="divAlinear">
+                        <label for="uf">
+                            <span>Seleccionar archivos</span>
+                        </label>       
+                     </div>
+                    
+                </div>
+                
+                <label>Archivos por subir:</label>
+                <div id="div3">
+          
+                    <table class="table table-striped table-responsive-md btn-table">
+                        <colgroup>
+                            <col span="1" style="width: 40%;">
+                            <col span="1" style="width: 40%;">
+                            <col span="1" style="width: 20%;">
+                         </colgroup>
+                        <tr>
+                            <th>Nombre del archivo</th>
+                            <th>Descripción</th>
+                            <th></th>
+                        </tr>
+                        <tbody>
+                            <tr *ngFor="let archivo of  arrayFileUpload" >
+                                <td>
+                                    <label>{{archivo.File.name}}</label>
+                                </td>
+                                <td>
+                                    <input class="inputDes" [(ngModel)]="archivo.Descripcion">
+                                </td>
+                                <td>
+                                    <button mat-raised-button color="primary"  (click)="quitUploadFile(archivo.File)">quitar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="divAlinear">
+                    <button  mat-raised-button color="primary" (click)="uploadFiles()">Subir</button>
+                </div>
+                <br>
+                <br>
+                <label>Archivos:</label>
+                <div id="div4">
+          
+                    <table class="table table-striped table-responsive-md btn-table">
+                        <colgroup>
+                            <col span="1" style="width: 20%;">
+                            <col span="1" style="width: 40%;">
+                            <col span="1" style="width: 15%;">
+                            <col span="1" style="width: 10%;">
+                            <col span="1" style="width: 10%;">
+                         </colgroup>
+                        <tr>
+                            <th>Nombre del archivo</th>
+                            <th>Descripción</th>
+                            <th>Fecha de subida</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tbody>
+                            <tr *ngFor="let archivo of  arrayFiles" >
+                                <td>
+                                    <label>{{archivo.nombreArchivo}}</label>
+                                </td>
+                                <td>
+                                    <label>{{archivo.descripcion}}</label>
+                                </td>
+                             
+                                <td>
+                                    <label>{{archivo.fecha}}</label>
+                                </td>
+                             
+                                <td>
+                                    <button mat-raised-button class="btnDescargar"  (click)="getFile(archivo)" >Descargar</button>
+                                </td>
+                                <td>
+                                    <button *ngIf="archivo.evidenciaAgente == 0" mat-raised-button class="btnSalir"  (click)="deleteFile(archivo)">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>          
+                </div>
+                <div class="divAlinear">
+                    <button  class="btnDescargar" mat-raised-button (click)="getAllFiles()">descargar todos</button>
+                </div>
+                
+                
+            </div>
+
+          
+    </div>
+    <br><br>
+
+    
+    <div class="divEvidenciasSeguimiento">
+        <label class="labelTitulosSeguimiento">Mapa</label>
+        <button  class="btnDescargar" mat-raised-button (click)="verDestino()">Ver destino</button>
+        
+        <button  class="btnDescargar" mat-raised-button (click)="verAgente()">Ver agente</button>
+
+
+
+
+           <div style="padding: 1%;">
+                <agm-map [latitude]="currentPos.lat" [longitude]="currentPos.lng" [zoom]="zoom" [disableDefaultUI]="false">
+                    <agm-marker [label]="{color: 'blue', text: titleDestino}" [latitude]="lugarDestino.lat" [longitude]="lugarDestino.lng"></agm-marker>
+                    <agm-marker  *ngFor="let point of points" [latitude]="point.lat" [longitude]="point.lng"></agm-marker>
+                    <agm-polyline strokeColor="red">
+                        <agm-polyline-point *ngFor="let point of points" [latitude]="point.lat" [longitude]="point.lng"></agm-polyline-point>
+                    </agm-polyline>
+                </agm-map>
+            </div>
+    </div>
+
+
+<br><br>
+<!--
+    <div class="divEvidenciasSeguimiento">
+        <label class="labelTitulosSeguimiento">Gastos</label>
+        <div style="padding: 1%;">
+            <label>Registrar nuevo gasto</label>
+            <br>
+            <label >Concepto</label>
+            <input [(ngModel)]="conceptoGasto">
+            <br>
+            <label >Cantidad</label>
+            <input [(ngModel)]="cantidadGasto">
+            <br>
+            <label>Pagado: </label>
+            <mat-slide-toggle></mat-slide-toggle>
+            <br>
+            <button (click)="open(content)">Guardar gasto</button>
+
+     
+            <br>
+            <label>Gastos registrados:</label>
+            <div id="div4">
+          
+                <table class="table table-striped table-responsive-md btn-table">
+                    <colgroup>
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 20%;">
+                        <col span="1" style="width: 15%;">
+                     </colgroup>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Cantidad</th>
+                        <th>Pagado</th>
+                    
+                        
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tbody>
+                        <tr *ngFor="let gasto of  arrayGastos" >
+                            <td>
+                                <label>{{gasto.concepto}}</label>
+                            </td>
+                            <td>
+                                <label>{{gasto.cantidad}}</label>
+                            </td>
+                         
+                            <td>
+                                <mat-slide-toggle ngModel name="enableWifi"></mat-slide-toggle>
+                            </td>
+                         
+                          
+                        </tr>
+                    </tbody>
+                </table>
+                <br>          
+            </div>
+  
+        
+        </div>
+
+    </div>-->
+
+    <br>
+  
+
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Cerrar ticket!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>      
+          {{mesajeCheckfiles}}
+      </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" color="warn" class="btn btn-outline-dark" (click)="c('Save click')">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="cerrarTicketModal()">Cerrar ticket</button>
+    </div>
+  </ng-template>
+  
+  <ng-template #content2 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ticket pendiente!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <label>El ticket se reprograma para el día: </label>
+        <div class="divFechaHora">
+            <div class="divFecha"><input class="form-control" type="date" [(ngModel)]="fechaPendiente"></div>
+            <div class="divHora"><input class="form-control" type="time" [(ngModel)]="horaPendiente"></div>
+        </div>
+        <br>
+        <label>Justificación:</label><br>
+        <textarea rows="5" class="form-control" [(ngModel)]="justificacionPendiente"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button type="button" color="warn" class="btn btn-outline-dark" (click)="c('Save click')">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="pendienteTicketModal()">Aceptar</button>
+    </div>
+  </ng-template>
+  
+
+  <ng-template #content3 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ingresa el tiempo de solución!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="cancelarEstatusUrgente()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input [(ngModel)]="tiempoUrgente" type="number"> Horas
+    </div>
+    <div class="modal-footer">
+        <button type="button" color="warn" class="btn btn-outline-dark" (click)="cancelarEstatusUrgente()">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="updatePrioridasUrgente()">Guardar</button>
+    </div>
+  </ng-template>
+  
+  

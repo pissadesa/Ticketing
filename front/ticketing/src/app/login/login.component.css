@@ -1,0 +1,31 @@
+.divPrincipalLogin{
+    min-width: 100%;
+    min-height: 100%;
+   /* background-color: #003770;*/
+   background:   
+   linear-gradient(-225deg, #003770 50%, #2D5797 80%);
+    padding-top: 3%;
+}
+
+.divContenedorLogin{
+    background-color: white;
+    max-width: 40%;
+    min-width: 40%;
+    margin-left: 28%;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding:2%;
+    text-align: center;
+}
+
+
+.inputLogin{
+    min-width: 50%;
+    border: none;
+    background-color: #dddddd;
+    min-height: 40px;
+}
+
+.imgLogoLogin{
+    max-width: 80%;
+}

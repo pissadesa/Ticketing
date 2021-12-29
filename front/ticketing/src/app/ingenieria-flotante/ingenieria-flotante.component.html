@@ -1,0 +1,88 @@
+<app-menu-lateral></app-menu-lateral>
+
+<div class="divContenedorFlotantes">
+    <div class="divTitulo">  
+        <h2><strong>Ingenieria Flotante</strong></h2> 
+        <div class="divBotonesContenedor">
+           <div class="divbtn1">
+            <button routerLink="/nuevoFlotante/-1" class="btnNuevaPersona" mat-raised-button color="primary">Nuevo</button>
+            <button routerLink="/cargaMasiva" class="btnMasiva" mat-raised-button color="primary">Cargar excel</button>
+           </div>
+           <div class="divbtn2">
+            <button (click)="descargarCatalogo()" class="btnCatalogo" mat-raised-button >Descargar catalogo</button>
+           </div>
+        </div>
+
+        <br>
+        <div class="divMargin">
+            <label class="labelTitulosProyecto" >Filtrar por:</label>
+            <div class="titulosMargin">
+           
+                <div class="divContenedor1">
+                 <label>Nombre:</label> <br>
+                 <input class="form-control" [(ngModel)]="filtroNombre"  (ngModelChange)="ejecutarFiltros()"  placeholder="Nombre">
+                 
+                </div>
+                 <div class="divContenedor1">
+                     <label class="marginComponentesMedios ">Estado: </label><br>
+                     <select class="form-control" (change)="cambioEstado()"   [(ngModel)]="filtroEstado">
+                        <option *ngFor="let estado of arrayEstados" [value]="estado">
+                                    {{estado}}
+                        </option>
+                     </select>
+         
+                 </div>
+                
+                 <div class="divContenedor1">
+                     <label   class="marginComponentesMedios">Municipío: </label><br>
+      
+                     <select (change)="ejecutarFiltros()" class="form-control"    [(ngModel)]="filtroMunicipio">
+                    
+                        <option *ngFor="let municipio of arrayMunicipios">
+                                    {{municipio}}
+                        </option>
+                     </select>
+         
+                 </div>
+   
+             </div>
+    
+        </div>
+
+
+
+    </div>
+
+
+    <br>
+      <table class="table table-striped">
+        <colgroup>
+            <col span="1" style="width: 26%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 14%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 15%;">
+         </colgroup>
+        <tr>
+            <th  class="thNombre">Nombre</th>
+            <th>Municipio</th>
+            <th>Estado</th>
+            <th>Proyecto</th>
+            <th>Numero de servicios</th>
+            <th>Detalle de servicios</th>
+            <th>Actializar datos</th>
+        </tr>
+        <tbody>
+    <tr *ngFor="let flotante of arrayShow">
+                <td class="thIzquierda">{{flotante.nombre}}</td>
+                <td>{{flotante.municipio}}</td>
+                <td>{{flotante.estado}}</td>
+                <td>{{flotante.proyecto}}</td>
+                <td class="thIzquierda">{{flotante.numeroServicios}}</td>
+                <td><button (click)="btnDetalle(flotante.id)"   mat-raised-button color="primary">ver tickets</button></td>
+                <td><button (click)="btnActualizar(flotante.id)"   mat-raised-button style="background-color: yellow">actualizar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>       

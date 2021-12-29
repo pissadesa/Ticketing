@@ -1,0 +1,173 @@
+.divContenedorSeguimiento{
+    padding-top: 1%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5.5%;
+ 
+}
+
+.divMainSeguimiento{
+    min-width: 92%;
+    display: flex;
+}
+
+.divIzquierdoSeguimiento{
+    max-width: 50%;
+    min-width: 50%;
+    margin-left: 5%;
+
+}
+
+.divDerechoSeguimiento{
+    margin-left: 1%;
+    max-width: 40%;
+    min-width: 40%;
+ 
+}
+
+
+.textAreaNota{
+    min-width: 100%;
+}
+
+#div2 {
+    overflow-y:scroll;
+    overflow-x: hidden;
+    height:400px;
+    width:100%;   
+}
+#div2 table {
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.7);;
+   
+}
+
+
+#div3 {
+    overflow-y:scroll;
+    overflow-x: hidden;
+    max-height:150px;
+    width:100%;
+    
+}
+#div3 table {
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.7);;
+   
+}
+
+#div4 {
+    overflow-y:scroll;
+    overflow-x: hidden;
+    max-height:250px;
+    width:100%;
+    
+}
+#div4 table {
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.7);;
+   
+}
+
+
+.btnguardarNota{
+    margin-left: 80%;
+}
+
+
+.labelfechaNota{
+    min-width: 45%;
+
+}
+
+.labelTipoNota{
+    min-width: 55%;
+    text-align: right;
+    
+}
+
+.divDatosGeneralesSeguimiento{
+    border: 1px solid rgba(0, 55, 112, 0.3);
+}
+
+.labelTitulosSeguimiento{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+
+.btnSalir{
+    background-color: red;
+    color: white;
+    margin-left: 2%;
+  }
+
+  .divEvidenciasSeguimiento{
+    max-width: 95%;
+    border: 1px solid rgba(0, 55, 112, 0.3);
+    margin-left: 1%;
+}
+
+#uf {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    }
+  
+    label[for="uf"] {
+      background-color: #3F51B5;
+      color: white;
+      display: inline-block;
+      transition: all .5s;
+      cursor: pointer;
+      padding: 5px 10px !important;
+      text-align: center;
+      border-radius: 5px;
+      }
+  
+
+      .btnDescargar{
+        background-color: #5cb85c;
+        color: white;
+
+      }
+
+      .inputDes{
+          min-width: 90%;
+      }
+
+ 
+
+.divAlinear{
+    margin-top: 1%;
+    min-width: 100%;
+    text-align: right;
+}
+
+
+agm-map {
+    height: 500px;
+  }
+  
+  
+  
+  .divFechaHora{
+      min-width: 100%;
+      max-width: 100%;
+      display: flex;
+  }
+  
+  
+  .divHora{
+    min-width: 49%;
+    max-width: 49%;
+  }
+  .divFecha{
+    min-width: 49%;
+    max-width: 49%;
+    margin-right: 2%;
+  }
+  

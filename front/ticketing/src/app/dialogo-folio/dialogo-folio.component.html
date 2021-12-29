@@ -1,0 +1,12 @@
+<div>
+    <h1 mat-dialog-title>Ticket creado</h1>
+    <div mat-dialog-content>
+        <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+            El ticket se creo con folio:<br>
+            <strong> {{data}}</strong>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="cancelar()">Aceptar</button>
+    </div>
+</div>

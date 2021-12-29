@@ -1,0 +1,85 @@
+<app-menu-lateral></app-menu-lateral>
+
+
+
+<div class="divContenedorTickets">
+    
+    <div class="divTitulo">  <label><strong>Tickets</strong></label> <button  (click)="btnNuevoTicket()" class="btnNuevoTicket" mat-raised-button color="primary">Nuevo ticket</button></div>
+    <label>Buscar por palabra clave o folio: </label><input class="form-control" [(ngModel)]="keyBusqueda"(ngModelChange)="busqueda()" >
+   
+    <br>
+    <div>
+        <table  class="table">
+            <colgroup>
+                <col span="1" style="width: 85%;">
+                <col span="1" style="width: 15%;">
+             </colgroup>
+         
+            <tbody>
+             <tr  class="fila" *ngFor="let ticket of arrayShow">
+                <td>
+                    <div style="display: flex;">
+                        <div class="divTablaIzquierdo">
+                            <span class="labelItem">Asunto: <strong>{{ticket.asunto}}</strong></span>
+                            <br>
+                            <span class="labelItem">Folio: <strong>{{ticket.folio}}</strong></span>
+                            <br>
+                            <span class="labelItem">Proyecto: {{ticket.proyecto}}</span>
+                            <br>
+                            <span class="labelItem">{{ticket.asignado}}</span>                       
+                        </div>
+                        <div class="divTablaDerecho">
+                            <span class="labelItem">Nivel de SLA: {{ticket.prioridad}}</span>
+                            <br>
+                            <span class="labelItem">Vencimiento SLA en: {{ticket.sla}} Horas</span>
+                            <br>
+                            <span class="labelItem">Estatus: {{ticket.status}}</span>
+                            <br>
+                            <span class="labelItem">Creación: {{ticket.fecha}}</span>
+                        </div>
+
+                    </div>
+                </td>
+                <td>
+                    <button mat-raised-button style="background-color: yellow" (click)="btnDetalle(ticket)">ver detalle</button>
+                </td>
+                
+             </tr>
+            </tbody>
+        </table>      
+        
+        <mat-paginator [length]="numeroTickets"
+              [pageSize]="itemPage"
+              (page)="handlePageEvent($event)"
+              aria-label="Select page">
+    
+           
+              
+              
+              
+        </mat-paginator>
+          
+    </div>
+
+</div>
+
+<mat-spinner *ngIf="showSpinner" diameter ="40" class="progress"></mat-spinner>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Hello, World!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+  
+
+

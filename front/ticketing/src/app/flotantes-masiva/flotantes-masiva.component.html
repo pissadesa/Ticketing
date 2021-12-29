@@ -1,0 +1,163 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorMasiva">
+
+
+
+
+    <div class="container">
+  
+        <div class="card">
+          <div class="card-header">
+            Carga desde CSV
+          </div>
+          <div class="card-body">
+      
+
+      
+
+            <input name="uf" id="uf" type="file" (change)="uploadListener($event)" accept=".csv">
+  
+      <div class="divAlinear">
+         <label for="uf">
+             <span>Seleccionar archivo</span>
+         </label>       
+      </div>
+          </div>
+
+          <label 
+          *ngIf="records.length > 0"
+          class="example-margin">{{ value | number:'1.2-2' }} %</label>
+          <mat-progress-bar
+          style="height: 10px; border-radius: 5px;"
+          *ngIf="records.length > 0"
+          class="example-margin"
+          [color]="color"
+          [mode]="mode"
+          [value]="value">
+      </mat-progress-bar>
+
+
+          <div class="card-body">
+            <label>{{mensaje}}</label><br>
+
+            <button mat-raised-button color="primary" *ngIf="records.length > 0" (click)="cargando()">cargar</button>
+           <br><br>
+           <!--  <label  *ngIf="records2.length > 0">Los siguientes son los registros que no se pudieron cargar:</label>--> 
+           <div id="div2"  > 
+             <table class="table" >
+               <thead >
+                 <tr>
+                   <!--<th scope="col">Estado</th>
+                   <th scope="col">Localidad</th>  *ngIf="records2.length > 0"-->
+                   <th scope="col">Nombre</th>
+                   <th scope="col">Telefono</th>
+                   
+                   <th scope="col">Correo</th>
+                   <th scope="col">Curp</th>
+                   <th scope="col">Dirección</th>
+                  <!-- <th scope="col">Banco</th>
+                   
+                   <th scope="col">Tarjeta</th>
+                   <th scope="col">num. de cuenta</th>
+                   <th scope="col">clabe</th>
+                   <th scope="col">Estatus</th>
+                   
+                   <th scope="col">Comentarios</th>-->
+                 </tr>
+               </thead>
+             
+               <tbody >
+                 <tr *ngFor="let record of records">
+                   <!--<th scope="row">{{record.estado}}</th>
+                   <td>{{record.municipio}}</td>-->
+                   <td>{{record.nombre}}</td>
+                   <td>{{record.telefono}}</td>
+             
+                   <td>{{record.email}}</td>
+                   <td>{{record.curp}}</td>
+                   <td>{{record.calle}}</td>
+             
+                  <!-- <td>{{record.banco}}</td>
+                   <td>{{record.numeroTarjeta}}</td>
+                   <td>{{record.numeroCuenta}}</td>
+             
+                   <td>{{record.clabeInterbancaria}}</td>
+                   <td>{{record.estatus}}</td>
+                   <td>{{record.comentarios}}</td>-->
+                 </tr>
+             
+               </tbody>
+             
+             </table>
+           </div>
+        <br>
+       <label  *ngIf="records2.length > 0">Estos registros no se cargaran:</label>
+     
+        <div id="div3" *ngIf="records2.length > 0"> 
+         <table class="table" >
+           <thead >
+             <tr>
+               <!--<th scope="col">Estado</th>
+               <th scope="col">Localidad</th>  *ngIf="records2.length > 0"-->
+               <th scope="col">Nombre</th>
+               <th scope="col">Telefono</th>
+               
+               <th scope="col">Correo</th>
+               <th scope="col">Curp</th>
+               <th scope="col">Causa</th>
+              <!-- <th scope="col">Banco</th>
+               
+               <th scope="col">Tarjeta</th>
+               <th scope="col">num. de cuenta</th>
+               <th scope="col">clabe</th>
+               <th scope="col">Estatus</th>
+               
+               <th scope="col">Comentarios</th>-->
+             </tr>
+           </thead>
+         
+           <tbody >
+             <tr *ngFor="let record of records2">
+               <!--<th scope="row">{{record.estado}}</th>
+               <td>{{record.municipio}}</td>-->
+               <td>{{record.nombre}}</td>
+               <td>{{record.telefono}}</td>
+         
+               <td>{{record.email}}</td>
+               <td>{{record.curp}}</td>
+               <td>{{record.calle}}</td>
+         
+              <!-- <td>{{record.banco}}</td>
+               <td>{{record.numeroTarjeta}}</td>
+               <td>{{record.numeroCuenta}}</td>
+         
+               <td>{{record.clabeInterbancaria}}</td>
+               <td>{{record.estatus}}</td>
+               <td>{{record.comentarios}}</td>-->
+             </tr>
+         
+           </tbody>
+         
+         </table>
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+        </div>
+        </div>
+    </div >
+</div>

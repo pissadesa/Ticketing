@@ -1,0 +1,67 @@
+
+
+<div class="menuHorizontal" *ngIf="visible == 0">
+
+
+  <a routerLink="/home">
+    <div class="divItemMenu">
+      <img class="imgIconosmenu" src="assets/imagenes/house.png"><br>
+      <label class="labelMenu">Inicio</label>
+    </div>
+  </a>
+    <br>
+    <a routerLink="/tickets/0"  *ngIf="visibleTickets == 1">
+      <div class="divItemMenu">
+        <img class="imgIconosmenu" src="assets/imagenes/ticket.png"><br>
+        <label class="labelMenu">Tickets</label>
+      </div>
+    </a>
+     
+    
+    <br>
+    
+    <a routerLink="/tickets/1" *ngIf="visibleDispatch == 1">
+      <div class="divItemMenu">
+        <img class="imgIconosmenu" src="assets/imagenes/dispath_logo.png"><br>
+        <label class="labelMenu">Dispatch</label>
+      </div> 
+      </a>
+      <br>
+      <a routerLink="/dashboard" *ngIf="visibleDashboard == 1">
+        <div class="divItemMenu">
+          <img class="imgIconosmenu" src="assets/imagenes/dashboar_logo.png"><br>
+          <label class="labelMenu">Dashboard</label>
+        </div> 
+        </a>
+
+    <br>
+
+    <a routerLink="/admin" *ngIf="visibleAdministrador == 1">   
+      <div class="divItemMenu" >
+        <img class="imgIconosmenu" src="assets/imagenes/admin_logo.png">
+        <label class="labelMenu">Administrar</label>
+      </div>
+    </a>
+
+      <br>
+
+      <a routerLink="/flotantes" *ngIf="visibleTalento == 1">   
+        <div class="divItemMenu" >
+          <img class="imgIconosmenu" src="assets/imagenes/talento.png">
+          <label class="labelMenu">Ingenieria Flotante</label>
+        </div>
+      </a>
+  
+        <br>
+      <div class="divItemMenu">
+        <button class="btnLogOut" (click)="logOut()" >Salir</button>
+      </div>
+        
+    
+    </div>
+
+    
+
+    <!--*ngIf="visibleAdministrador  == 1"-->
+    
+    

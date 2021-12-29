@@ -1,0 +1,38 @@
+.divContenedorPersonas{
+    padding-top: 1%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5.5%;
+
+}
+.divTitulo{
+    width: 90%;
+}
+
+
+.btnNuevaPersona{
+    margin-left: 95%;
+
+}
+
+
+table{
+    min-width: 100%;
+    
+}
+
+th{
+    text-align: center;
+ 
+}
+td{
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    text-align: center;
+}
+
+.thIzquierda{
+    text-align: left;
+    padding-left: 5%;
+}
+

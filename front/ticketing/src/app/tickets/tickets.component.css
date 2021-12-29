@@ -1,0 +1,54 @@
+.divContenedorTickets{
+    padding-top: 1%;
+
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5.5%;
+
+}
+
+.btnNuevoTicket{
+    margin-left: 90%;
+
+}
+
+/*td{
+    border-top: 1px solid black;
+}*/
+
+table{
+    min-width: 90%;
+    background-color: #dddddd;
+    border-collapse:separate; 
+    border-spacing: 0 0.4em;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+}
+
+.fila{
+    background-color: white;
+    padding: 1% !important;
+    margin-top: 5%;
+}
+
+.divTablaDerecho{
+    min-width: 40%;
+}
+
+.divTablaIzquierdo{
+    min-width: 60%;
+}
+ 
+.labelItem{
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 1vw;
+}
+
+.progress{
+    background-color: white;
+    position: absolute;
+    width: 40px; 
+    height: 40px; 
+    margin-left: calc(50% - 20px);
+}

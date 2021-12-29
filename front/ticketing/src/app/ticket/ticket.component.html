@@ -1,0 +1,331 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorTicket">
+
+    <h2>Nuevo ticket</h2>
+    <br>
+
+    <div class="divMargin">
+        <label class="labelTitulosTicket">
+            Datos generales del ticket
+        </label>
+        <div style="padding: 1%;">
+            <div style="display: flex;">
+                <div class="itemDiv">
+                    <label>Proyecto: </label>
+            <select  class="form-control" [(ngModel)]="proyectoSelected">
+                <option  *ngFor="let proy of arrayProyectos" [value]="proy.idProyecto">
+                    {{proy.nombreProyecto}} 
+                  </option>
+            </select>
+                </div>
+        
+                
+                <div class="itemDiv">
+                    <label>Correo de contacto: </label>
+                    <input (change)="busquedaContacto(content)" class="form-control" [(ngModel)]="correoContacto" >
+                </div>
+                
+                <div class="itemDiv">
+                    <label>Nombre del solicitante: </label>
+                        <input class="form-control" [(ngModel)]="nombresolicitante">
+                   
+                </div>
+        
+            </div>
+            <br>
+        
+        
+            <div style="display: flex;">
+                <div class="itemDiv">
+                    <label>Tipo de ticket: </label>
+            <select class="form-control" [(ngModel)]="tipoSelected">
+                <option  *ngFor="let tipo of arrayTipos" [value]="tipo.id">
+                    {{tipo.nombre}} 
+                  </option>
+            </select>
+            <a routerLink="/tiposTickets">Nuevo tipo de ticket</a>
+                </div>
+        
+        
+            
+                <div class="itemDiv">
+                    <label>Prioridad: </label>
+                    <select (change)="cambioPrioridad(content3)" class="form-control" [(ngModel)]="prioridadSelected">
+                        <option [value]="1">Bajo</option>
+                        <option [value]="2">Medio</option>
+                        <option [value]="3">Alto</option>
+                        <option [value]="4">Incidente mayor</option>
+                    </select>
+                </div>
+        
+                <div class="itemDiv">
+                    <label>Estatus de ticket: </label>
+                    <select [disabled]="true" class="form-control" [(ngModel)]="estatusSelected">
+                        <option [value]="1" selected>Abierto</option>
+                        <option [value]="2">Pendiente</option>
+                        <option [value]="3">Resuelto</option>
+                        <option [value]="4">Cerrado</option>
+                        <option [value]="5">Re-abierto</option>
+                    </select>
+        
+                </div> 
+            </div>
+
+            
+            
+            <div style="display: flex;">
+                <div class="itemDiv">
+                    <label>Asignar: </label>
+                    <select   class="form-control" [(ngModel)]="idAgenteSelected">
+                        <option [value]="0">No asignar</option>
+
+                        <option *ngFor="let agente of arrayShow" [value]="agente.id">{{agente.nombre}} - {{agente.nombreTipo}}</option>
+                    </select>
+                    <mat-slide-toggle (ngModelChange)="cambioSwitch()" [(ngModel)]="tipoAsignado"  class="switch" color="primary">Flotantes</mat-slide-toggle>
+    
+        
+                </div> 
+            </div>
+            
+            
+
+            <div class="divAsuntoDes">
+
+
+                <label>Asunto: </label>
+                <input class="form-control"  [(ngModel)]="asunto" placeholder="Asunto">
+            
+            <br>
+                <label>Descripción: </label><br>
+                <textarea rows="3" class="form-control" [(ngModel)]="descripcion"></textarea>
+             
+            
+            
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+<br>
+
+
+<div class="divMargin">
+    <label class="labelTitulosTicket">Domicilio del servicio</label>
+<!---->
+    <div style="padding: 1%;">
+        <div style="display: flex;">
+
+            <div class="itemDiv">
+                <label>País: </label><br>
+                <select class="form-control" [(ngModel)]="pais">
+                    <option  *ngFor="let country of countries" [value]="country.name">
+                        {{country.name}} 
+                      </option>
+                </select>
+            </div>
+        </div>
+        
+        <br>
+        
+        <div style="display: flex;" *ngIf="pais === 'México'" >
+
+        
+        
+            <div class="itemDiv">
+                <label>Código postal: </label><br>
+                <input type="number" class="form-control" (change)="getInfoCp()" [(ngModel)]="codePostal"  placeholder="Codigo postal">
+              </div>
+                <br>
+        
+                <label>Estado: <br> {{estado}}</label>
+                <label class="marginMunicipio">Municipio: <br> {{municipio}}</label>
+                
+                <div class="itemDiv">
+                    <label class="marginComponentesMedios">Asentamiento: </label>
+                    <select class="form-control" [(ngModel)]="asentamiento">
+                        <option  *ngFor="let asent of arrayAsentamientos" [value]="asent.cadena" [selected]="asentamiento === asent.cadena">
+                            {{asent.cadena}} 
+                          </option>
+                          <option [value]="'Otro'">
+                            Otro
+                        </option>
+                    </select>
+                    <br>
+                    <input *ngIf="asentamiento === 'Otro'"  class="form-control" [(ngModel)]="asentamientoOtro"  placeholder="especifica...">
+                </div>
+        </div>
+        
+        
+        <div style="display: flex;" *ngIf="pais != 'México'">
+
+        
+        
+            <div class="itemDiv">
+                <label>Código postal: </label><br>
+                <input type="number" class="form-control" (change)="getInfoCp()" [(ngModel)]="codePostal"  placeholder="Codigo postal">
+              </div>
+                <br>
+                
+                <div class="itemDiv">
+                    <label class="marginComponentesMedios">Estado: </label>
+                    <input class="form-control" [(ngModel)]="estado"  placeholder="Estado">
+                </div>
+                <div class="itemDiv">
+                    <label class="marginComponentesMedios">Municipio: </label>
+                    <input class="form-control" [(ngModel)]="municipio"  placeholder="Municipio">
+                </div>
+                <br>
+
+        </div>
+        <br>
+        <div style="display: flex;" *ngIf="pais != 'México'">
+ 
+                <div class="itemDiv">
+                    <label class="marginComponentesMedios">Asentamiento: </label>
+                    <input class="form-control" [(ngModel)]="asentamiento"  placeholder="Asentamiento">
+                </div>
+        </div>
+        
+        
+        
+        <br>
+        <div style="display: flex;">
+            <div  class="itemDiv">
+                <label>Calle: </label><br>
+                <input class="form-control" [(ngModel)]="calle" placeholder="Calle">
+            </div>
+        
+            <div  class="itemDiv">
+                <label >Número exterior: </label><br>
+                <input type="number" class="form-control" [(ngModel)]="numExterior" placeholder="Número exterior">
+            </div>
+        
+            <div  class="itemDiv">
+                <label class="marginComponentesMedios">Número interior: </label><br>
+                <input class="form-control" [(ngModel)]="numInterior" placeholder="Número interior">
+            </div>
+        
+        
+        </div>
+        
+    </div>
+<!---->
+
+</div>
+<br>
+<button (click)="nuevoTIcket()" mat-raised-button color="primary">Guardar</button>
+<br><br>
+
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+                
+        <div id="div2">
+            <table  class="table table-striped">
+                <colgroup>
+                    <col span="1" style="width: 15%;">
+                    
+                    <col span="1" style="width: 5%;">
+                    
+                    <col span="1" style="width: 11%;">
+                    
+                    <col span="1" style="width: 11%;">
+                    
+                    <col span="1" style="width: 11%;">
+                    
+                    <col span="1" style="width: 20%;">
+                    
+                    <col span="1" style="width: 5%;">
+                    
+                    <col span="1" style="width: 5%;">
+                    <col span="1" style="width: 12%;">
+                </colgroup>
+            
+                <tr>
+                    <th  class="thNombre">Nombre del solicitante</th>
+                    <th>cp</th>
+                    <th>Estado</th>
+                    <th>Municipio</th>
+                    <th>Asentamiento</th>
+                    <th>Calle</th>
+                    <th>Num. Exterior</th>
+                    <th>Num. Interior</th>
+                </tr>
+                
+                
+                <tbody>
+                <tr  class="fila" *ngFor="let sugerencia of arraySugerencias">
+                    <td>
+                        {{sugerencia.nombreSolicitante}} 
+                    </td>
+                    <td>
+                        {{sugerencia.cp}} 
+                    </td>
+                    <td>
+                        {{sugerencia.Estado}}
+                    </td>
+                    <td>
+                        {{sugerencia.municipio}} 
+                    </td>
+                    <td>
+                       {{sugerencia.asentamiento}} 
+                    </td>
+                    <td>
+                        {{sugerencia.calle}} 
+                    </td>
+                    <td>
+                        {{sugerencia.numeroExterior}} 
+                    </td>
+                    <td>
+                        {{sugerencia.numeroInterior}} 
+                    </td>
+                    <td>
+                        <button mat-raised-button style="background-color: yellow" (click)="btnAsignar(sugerencia)" >Autocompletar</button>
+                    </td>               
+                </tr>
+                </tbody>
+            </table>      
+        </div>
+                
+        
+        
+        
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+
+
+
+  
+  <ng-template #content3 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ingresa el tiempo de solución!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="cancelarEstatusUrgente()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input [(ngModel)]="tiempoUrgente" type="number"> Horas
+    </div>
+    <div class="modal-footer">
+        <button type="button" color="warn" class="btn btn-outline-dark" (click)="cancelarEstatusUrgente()">Cancelar</button>
+        <button type="button" class="btn btn-outline-dark" (click)="guardarTiempoUrgente()">Guardar</button>
+    </div>
+  </ng-template>
+  
+  
+  

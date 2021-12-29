@@ -1,0 +1,90 @@
+.divContenedorEstadisticas{
+    padding-top: 1%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5.5%;
+ 
+}
+
+
+.labelTitulosEstadisticas{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+
+
+.titulosMarginFiltros{
+    padding: 1%;
+    margin-top: 0.5%;
+    max-width: 90%;
+    display: flex;
+    
+}
+
+
+.divContenedorfiltro{
+    min-width: 23%;
+    max-width: 23%;
+    margin-right: 1%;
+}
+
+.divContenedorfiltroFecha{
+    min-width: 100%;
+    max-width: 100%;
+    margin-right: 5%;
+}
+
+.divMargin{
+    border: 1px solid rgba(0, 55, 112, 0.3);;
+}
+
+.marginLeft{
+    margin-left: 1%;
+}
+
+.radioGroup{
+    min-width: 100%;
+}
+
+.estatusRadio{
+    min-width: 16%;
+    max-width: 16%;
+}
+
+
+.prioridadRadio{
+    
+    min-width: 25%;
+    max-width: 25%;
+}
+
+
+#div2 {
+    overflow-y:scroll;
+    overflow-x: hidden;
+    max-height:250px;
+    min-width:100%;
+    
+}
+#div2 table {
+   min-width: 100%;
+   background-color: rgba(255, 255, 255, 0.7);
+   
+}
+
+.btnEstatus{
+    padding: 1%;
+    background-color: white;
+    text-align: center;
+    min-width: 15%;
+    border: 1px solid rgba(0, 55, 112, 0.3);;
+    margin-right: 1%;
+}
+
+.btnDescargarExcel{
+    
+    text-align: center;
+    min-width: 15%;
+    margin-left: 16%;
+}

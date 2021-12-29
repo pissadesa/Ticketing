@@ -1,0 +1,79 @@
+
+.divContenedorNuevoFlotante{
+    padding: 3%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5%;
+}
+
+
+
+
+.marginComponentesMedios{
+    margin-left: 2%;
+}
+.marginMunicipio{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.titulosMargin{
+    padding: 1%;
+    margin-top: 0.5%;
+
+    max-width: 90%;
+    display: flex;
+}
+
+
+.titulosMargin2{
+    padding: 1%;
+    margin-top: 0.5%;
+    max-width: 90%;
+}
+.imgLogo{
+    width: 10%;
+    position: absolute;
+    margin-left: 85%;
+}
+
+
+.inputStyle{
+    padding:3px;
+    border-radius:10px;
+}
+
+  input:focus {
+    color: #379871;
+    background-color: rgba(45, 87, 151, 0.1);
+    outline: none;
+  }
+
+  .divContenedor1{
+      min-width: 25%;
+      max-width: 25%;
+      margin-right: 5%;
+  }
+  .divContenedor2{
+    min-width: 55%;
+    max-width: 55%;
+    margin-right: 5%;
+}
+
+  .btnSalir{
+    background-color: red;
+    color: white;
+    margin-left: 2%;
+  }
+
+ 
+
+.labelTitulosProyecto{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+
+.divMargin{
+    border: 1px solid rgba(0, 55, 112, 0.3);;
+}

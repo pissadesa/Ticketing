@@ -1,0 +1,55 @@
+.divContenedorProyecto{
+    padding-top: 1%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5.5%;
+
+}
+
+.divFormulario{
+    min-width: 92%;
+    display: flex;
+}
+
+.divIzquierdo{
+    max-width: 60%;
+    min-width: 60%;
+
+}
+
+.divDerecho{
+    margin-left: 5%;
+    max-width: 28%;
+    min-width: 28%;
+ 
+}
+
+.labelPrioridad{
+    width: 100px;
+    display: block; 
+}
+
+.slideHoras{
+    min-width: 75%;
+}
+
+.divDatosGeneralesProyecto{
+    border: 1px solid rgba(0, 55, 112, 0.3);;
+}
+
+.labelTitulosProyecto{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+.btnSalir{
+    background-color: red;
+    color: white;
+    margin-left: 2%;
+  }
+  
+  .check{
+      max-width: 30%;
+      min-width: 30%;
+      margin-left: 1%;
+  }

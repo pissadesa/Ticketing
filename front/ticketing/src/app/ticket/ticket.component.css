@@ -1,0 +1,44 @@
+.divContenedorTicket{
+    padding-top: 1%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5.5%;
+
+}
+
+.itemDiv{
+    min-width: 30%;
+    margin-right: 3%;
+}
+
+.divAsuntoDes{
+    max-width: 96%;
+}
+
+.marginMunicipio{
+    margin-left: 12%;
+    margin-right: 12%;
+}
+
+.labelTitulosTicket{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+
+.divMargin{
+    border: 1px solid rgba(0, 55, 112, 0.3);;
+}
+
+#div2 {
+    overflow-y:scroll;
+    overflow-x: hidden;
+    max-height:300px;
+    min-width:100%;
+    
+}
+#div2 table {
+   min-width: 100%;
+   background-color: rgba(255, 255, 255, 0.7);
+   
+}

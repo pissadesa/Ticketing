@@ -1,0 +1,267 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorNuevoFlotante">
+    <h2><strong>Ingeniero flotante</strong></h2>
+    <div class="divMargin">
+        <label class="labelTitulosProyecto" >Datos de acceso</label>
+        <div class="titulosMargin">
+       
+            <div class="divContenedor1">
+             <label>CURP:</label> <br>
+             <input class="form-control" (change)="buscarCurp()" [readonly]="editable"  [(ngModel)]="curp"  placeholder="CURP">
+             
+            </div>
+             <div class="divContenedor1">
+                 <label class="marginComponentesMedios ">Contraseña: </label><br>
+                 <input type="password" class="form-control" [readonly]="editable" [(ngModel)]="pass" placeholder="Contraseña">
+     
+             </div>
+            
+             <div class="divContenedor1">
+                 <label   class="marginComponentesMedios">Confirmar contraseña: </label><br>
+                 <input type="password" class="form-control" [readonly]="editable" [(ngModel)]="pass2" placeholder="Contraseña">
+             </div>
+        
+         </div>
+
+    </div>
+   
+ 
+
+    <br>
+
+
+    <div class="divMargin">
+        <label class="labelTitulosProyecto" >Datos Personales:</label>
+        <div class="titulosMargin2">
+ 
+            <div style="display: flex;">
+                
+                <div class="divContenedor1">
+                    <label  ng-readonly="">
+                        Nombre(s)
+                    </label><br>
+                    <input class="form-control" [(ngModel)]="nombrePersona" placeholder="Nombre(s)">
+                  </div>
+            
+                    <div class="divContenedor1">        
+                        <label class="marginComponentesMedios">
+                            Apellido paterno: 
+                        </label><br>
+                        <input class="form-control" [(ngModel)]="apPaterno" placeholder="Apellido paterno:">
+                    </div>
+                    
+                    <div class="divContenedor1">
+                        <label  class="marginComponentesMedios">
+                            Apellido materno: 
+                        </label><br>
+                        <input class="form-control" [(ngModel)]="apMaterno" placeholder="Apellido materno:">
+            
+                    </div>
+    
+    
+            </div>
+            <br>
+
+           <div style="display: flex;">
+            <div class="divContenedor1">
+                <label>Edad: </label><br>
+                <input type="number" class="form-control" [(ngModel)]="edad" placeholder="Edad">
+            </div>
+            <div class="divContenedor1">
+                <label>Género: </label><br>
+                <select class="form-control" [(ngModel)]="genero">
+                    <option [value]="'F'">
+                        Femenino
+                      </option>
+                      <option [value]="'M'">
+                        Masculino
+                      </option>
+              </select>
+            </div>
+            <div class="divContenedor1">
+                <label>Teléfono: </label><br>
+                <input type="number" class="form-control" [(ngModel)]="telefono" placeholder="Teléfono">
+            </div>
+           </div>
+           <br>
+           <div style="display: flex;">
+            <div class="divContenedor1">
+                <label>email: </label><br>
+                <input type="email" class="form-control" [(ngModel)]="email" placeholder="E-mail">
+            </div>
+           </div>
+        </div>
+    </div>
+
+ <br>
+ 
+
+ <div class="divMargin">
+    <label class="labelTitulosProyecto" >Datos de ingreso:</label>
+    <div class="titulosMargin2">
+
+        <div style="display: flex;">
+            
+            <div class="divContenedor1">
+                <label  ng-readonly="">
+                    Proyecto de ingreso:
+                </label><br>
+                <input class="form-control" [(ngModel)]="proyectoIngreso" placeholder="Proyecto de ingreso">
+              </div>
+        
+                <div class="divContenedor1">        
+                    <label class="marginComponentesMedios">
+                        Empresa:
+                    </label><br>
+                    <select class="form-control" [(ngModel)]="empresa">
+                        <option [value]="'THTI'">
+                            THTI 
+                          </option>
+                          <option [value]="'TIA'">
+                            TIA
+                          </option>
+                          <option [value]="'ITCO'">
+                            ITCO
+                          </option>
+                  </select>               
+                 </div>
+                
+                <div class="divContenedor1">
+                    <label  class="marginComponentesMedios">
+                        Estatus del ingeniero: 
+                    </label><br>
+                    <select class="form-control" [(ngModel)]="estatus">
+                        <option [value]="0">
+                            Inactivo 
+                          </option>
+                          <option [value]="1">
+                            Activo
+                          </option>
+                  </select>
+        
+                </div>
+        </div>
+        <br>
+        <div style="display: flex;">
+            
+            <div class="divContenedor2">
+                <label  ng-readonly="">
+                    Comentarios:
+                </label><br>
+                <textarea class="form-control" [(ngModel)]="comentarios" placeholder="Comentarios"></textarea>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+    
+<br>
+<div class="divMargin">
+    <label class="labelTitulosProyecto" >Domicilio:</label>
+
+    <div class="titulosMargin2">
+        <div style="display: flex;">
+            <div class="divContenedor1">
+                <label>Código postal: </label><br>
+                <input type="number" class="form-control" (change)="getInfoCp()" [(ngModel)]="codePostal"  placeholder="Codigo postal">
+            </div>
+                <br>
+                <label>Estado: <br> {{estado}}</label>
+                <label class="marginMunicipio">Municipio: <br> {{municipio}}</label>
+                
+                <div class="divContenedor1">
+                    <label class="marginComponentesMedios">Asentamiento: </label>
+                    <select class="form-control" [(ngModel)]="asentamiento">
+                        <option  *ngFor="let asent of arrayAsentamientos" [value]="asent.cadena" [selected]="asentamiento === asent.cadena">
+                            {{asent.cadena}} 
+                          </option>
+                          <option [value]="'Otro'">
+                            Otro
+                          </option>
+                  </select>
+                  <br>
+                  <input *ngIf="asentamiento === 'Otro'"  class="form-control" [(ngModel)]="asentamientoOtro"  placeholder="especifica...">
+                </div>
+        </div>
+        <br>
+       <div style="display: flex;">
+            <div class="divContenedor1">
+                <label>Calle: </label><br>
+                <input class="form-control" [(ngModel)]="calle" placeholder="Calle">
+            </div>
+
+            <div class="divContenedor1">
+                <label >Número exterior: </label><br>
+                <input type="number" class="form-control" [(ngModel)]="numExterior" placeholder="Número exterior">
+            </div>
+
+            <div class="divContenedor1">
+                <label class="marginComponentesMedios">Número interior: </label><br>
+                <input class="form-control" [(ngModel)]="numInterior" placeholder="Número interior">
+            </div>
+
+
+       </div>
+
+        <!--(dateChange)="getInfoCp()" [(ngModel)]="codePostal"v-->
+    </div>  
+
+</div>
+<br>
+
+
+<div class="divMargin">
+    <label class="labelTitulosProyecto" >Datos bancarios:</label>
+    <div class="titulosMargin2">
+
+        <div style="display: flex;">
+            
+            <div class="divContenedor1">
+                <label  ng-readonly="">
+                    Clabe interbancaria:
+                </label><br>
+                <input class="form-control" [(ngModel)]="clabeInter" placeholder="Clabe interbancaria">
+              </div>
+        
+                <div class="divContenedor1">        
+                    <label class="marginComponentesMedios">
+                        Banco:
+                    </label><br>
+                    <input class="form-control" [(ngModel)]="banco" placeholder="Banco">
+                </div>
+                
+                <div class="divContenedor1">
+                    <label  class="marginComponentesMedios">
+                        Número de cuenta: 
+                    </label><br>
+                    <input class="form-control" [(ngModel)]="numeroCuenta" placeholder="Número de cuenta">
+        
+                </div>
+        </div>
+        <br>
+        <div style="display: flex;">
+            
+            <div class="divContenedor1">
+                <label  ng-readonly="">
+                    Número de tarjeta:
+                </label><br>
+                <input class="form-control" [(ngModel)]="numeroTarjeta" placeholder="Número de tarjeta">
+              </div>
+        
+               
+        </div>
+    </div>
+</div>
+
+
+    
+
+<br><br>
+
+    <button (click)="saveData()" mat-raised-button color="primary">{{titleButton}}</button>
+
+    <button class="btnSalir" (click)="btnSalir()" mat-raised-button >Cancelar</button>
+    <br><br>
+
+</div>

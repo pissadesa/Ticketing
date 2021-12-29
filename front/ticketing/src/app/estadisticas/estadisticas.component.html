@@ -1,0 +1,182 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorEstadisticas">
+    <h2>Dashboard</h2>
+ 
+<div class="divMargin">
+    <label class="labelTitulosEstadisticas">Estadísticas:</label>    
+
+
+    <label class="marginLeft">Filtrar por: </label>
+    <div class="titulosMarginFiltros">
+        <div class="divContenedorfiltro" *ngIf="selectProyectos == 1">
+            <label>Proyecto</label>
+            <br>
+           
+            <select  (change)='cambioSelectProyecto()'   class="form-control" [(ngModel)]="proyectoSelected">
+                <option  *ngFor="let proyecto of arrayProyectos" [value]="proyecto.idProyecto">
+                    {{proyecto.nombreProyecto}} 
+                  </option>
+            </select>
+        </div>        
+        <div  class="divContenedorfiltro"  *ngIf="selectLideres == 1">
+            <label>Líder</label><br>
+            <select (change)='cambioSelectLider()'  class="form-control" [(ngModel)]="liderSelected">
+                <option  *ngFor="let lider of arrayLideres" [value]="lider.id">
+                    {{lider.nombre}} 
+                  </option>
+            </select>
+        </div>        
+        <div class="divContenedorfiltro" *ngIf="selectAgentes == 1">
+            <label>Agente</label>
+            <br>
+            <select  (change)='cambioSelectAgente()' class="form-control" [(ngModel)]="agenteSelected">
+           
+                <option  *ngFor="let agente of arrayAgentes" [value]="agente.id">
+                    {{agente.nombre}} 
+                  </option>
+            </select>
+        </div>
+        <div class="divContenedorfiltro" *ngIf="selectFlotantes == 1" >
+            <label>Flotante</label>
+            <br>
+            <select (change)='cambioSelectFlotante()'  class="form-control" [(ngModel)]="flotanteSelected">
+           
+                <option  *ngFor="let agente of arrayFlotantes" [value]="agente.id">
+                    {{agente.nombre}} 
+                  </option>
+            </select>
+        </div>    
+        <div class="divContenedorfiltro"  >
+            
+           <button style="margin-top: 28px;" mat-raised-button color="primary" (click)="identificarUsuario()" >Restaurar filtros</button>
+
+        </div>  
+
+    </div>
+    <!--  <div class="titulosMarginFiltros">
+        <div class="divContenedorfiltroFecha">
+          <label>Fecha</label>
+            <input>
+            <input>
+        </div>        
+    </div>  -->
+    
+  <div style="padding: 1%;">
+    <div class="titulosMarginFiltros">
+        <button [ngStyle]="{'background-color':checkEstatus === 1 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(1)' class="btnEstatus">Abiertos <br>  <strong>{{contadorAbiertos}}</strong></button>
+        <button [ngStyle]="{'background-color':checkEstatus === 2 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(2)' class="btnEstatus">Pendientes <br> <strong>{{contadorPendientes}}</strong></button>
+        <button [ngStyle]="{'background-color':checkEstatus === 3 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(3)' class="btnEstatus"> Resueltos<br> <strong>{{contadorResueltos}}</strong></button>
+        <button [ngStyle]="{'background-color':checkEstatus === 4 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(4)' class="btnEstatus">Cerrados <br> <strong>{{contadorCerrados}}</strong></button>
+        <button [ngStyle]="{'background-color':checkEstatus === 5 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(5)' class="btnEstatus"> Reabiertos <br> <strong> {{contadorReabiertos}}</strong></button>
+        <button [ngStyle]="{'background-color':checkEstatus === 6 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(6)' class="btnEstatus">No asignados <br> <strong> {{contadorNoasignados}}</strong></button>
+        <button [ngStyle]="{'background-color':checkEstatus === 0 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioEsTatus(0)' class="btnEstatus">   Total <br><strong>{{totaltickets}}</strong></button>
+
+
+
+        <!--<mat-radio-group  [(ngModel)]="checkEstatus" (change)='cambioEsTatus()' aria-labelledby="example-radio-group-label" class="radioGroup example-radio-group">
+            <mat-radio-button class="estatusRadio" [value]="1">
+                Abiertos: <br>  {{contadorAbiertos}}
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button estatusRadio" [value]="2">
+                Pendientes: {{contadorPendientes}}
+             </mat-radio-button>
+            <mat-radio-button class="example-radio-button estatusRadio" [value]="3">
+                Resueltos: {{contadorResueltos}}
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button estatusRadio" [value]="4">
+                Cerrados: {{contadorCerrados}}
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button estatusRadio" [value]="5">
+                Reabiertos: {{contadorReabiertos}}
+            </mat-radio-button>
+
+            <mat-radio-button class="example-radio-button estatusRadio" [value]="0">
+                Total: {{totaltickets}}
+            </mat-radio-button>
+        </mat-radio-group>-->
+            
+    </div>
+    
+
+    <label>Prioridad</label>
+    <div class="titulosMarginFiltros">
+
+        <button [ngStyle]="{'background-color':checkPrioridad === 1 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioPrioridad(1)' class="btnEstatus">Bajo</button>
+        <button [ngStyle]="{'background-color':checkPrioridad === 2 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioPrioridad(2)' class="btnEstatus">Medio</button>
+        <button [ngStyle]="{'background-color':checkPrioridad === 3 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioPrioridad(3)' class="btnEstatus">Alto</button>
+        <button [ngStyle]="{'background-color':checkPrioridad === 4 ? 'rgba(51, 170, 51, .4)' : 'white' }" (click)='cambioPrioridad(4)' class="btnEstatus">Incidente mayor</button>
+        <button [ngStyle]="{'background-color':checkPrioridad === 0 ? 'rgba(51, 170, 51, .4)' : 'white' }"   (click)='cambioPrioridad(0)' class="btnEstatus">Todos</button>
+
+        <button mat-raised-button color="primary" (click)="descargarReporte()" class="btnDescargarExcel">Descargar xls</button>
+      
+
+       <!-- <mat-radio-group  [(ngModel)]="checkPrioridad" (change)="cambioPrioridad()" aria-labelledby="example-radio-group-label" class="radioGroup example-radio-group">
+            <mat-radio-button  [value]="1" class="example-radio-button estatusRadio">
+                Bajo
+            </mat-radio-button>
+            <mat-radio-button  [value]="2" class="example-radio-button estatusRadio">
+                Medio
+            </mat-radio-button>
+            <mat-radio-button  [value]="3" class="example-radio-button estatusRadio">
+                Alto
+            </mat-radio-button>
+            <mat-radio-button  [value]="4" class="example-radio-button estatusRadio">
+                Urgente
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button estatusRadio" [value]="0">
+                Mostrar todos
+            </mat-radio-button>
+        </mat-radio-group>
+            -->
+    </div>
+
+
+    <div>
+        <div id="div2">
+
+            <table class="table table-striped">
+                <colgroup>
+                    <col span="1" style="width: 20%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 22%;">
+                    <col span="1" style="width: 22%;">
+                 </colgroup>
+                <tr>
+                    <th  class="thNombre">Asunto</th>
+                    <th>Proyecto</th>
+                    <th>Prioridad</th>
+                    <th>Estatus</th>
+                    <th>Detalle</th>
+                </tr>
+                
+                <tbody>
+                    <tr *ngFor="let ticket of arrayShowTickets">
+                         <td class="thIzquierda">{{ticket.asunto}}</td>
+                         <td>{{ticket.proyecto}}</td>
+                         <td>{{ticket.prioridad}}</td>
+                         <td>{{ticket.estado}}</td>
+                         <td> <button mat-raised-button style="background-color: yellow" (click)="btnDetalle(ticket)">ver detalle</button></td>
+                     </tr>
+                 </tbody>
+         
+            </table>       
+        </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+<br><br>
+
+</div>
+<br>
+
+
+
+
+</div>

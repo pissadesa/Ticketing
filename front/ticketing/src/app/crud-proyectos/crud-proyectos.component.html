@@ -1,0 +1,31 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorProyectos">
+ 
+    <h2><strong>Proyectos</strong></h2>
+    <br>
+    <a routerLink="/proyecto/-1"><button  class="btnNuevoProyecto" mat-raised-button color="primary">Nuevo proyecto</button></a>
+    <br>
+    <br>
+<table class="table table-striped table-responsive-md btn-table">
+    <colgroup>
+        <col span="1" style="width: 40%;">
+        <col span="1" style="width: 40%;">
+        <col span="1" style="width: 20%;">
+        
+     </colgroup>
+    <tr>
+        <th  class="thNombre">Proyecto</th>
+        <th>Lider</th>
+    </tr>
+    <tbody>
+<tr *ngFor="let proyecto of arrayProyectos">
+            <td class="thIzquierda">{{proyecto.nombreProyecto}}</td>
+            <td>{{proyecto.nombre}}</td>
+            <td><button (click)="btnActualizarProyecto(proyecto)"  mat-raised-button style="background-color: yellow">Ver</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</div>

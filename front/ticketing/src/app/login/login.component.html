@@ -1,0 +1,21 @@
+<div class="divPrincipalLogin">
+    <br>
+    <br>
+    <div class="divContenedorLogin">
+        <br>
+        <!--<img class="imgLogoLogin" src="../../assets/imagenes/logo_pissa.png">-->
+        <img class="imgLogoLogin" src="assets/imagenes/logo_pissa.png">
+        <br>
+        <label>Usuario:</label>
+        <br>
+        <input  [(ngModel)]="userName"  class="inputLogin" placeholder="Usuario">
+        <br><br>
+        <label>Contraseña:</label>
+        <br>
+        <input  (keydown.enter)="login()"  [(ngModel)]="pass"  type="password" class="inputLogin" placeholder="Contraseña">
+        <br><br>
+        <button (click)="login()" mat-raised-button color="primary">Ingresar</button>
+    <br><br>
+    
+    </div>
+</div>

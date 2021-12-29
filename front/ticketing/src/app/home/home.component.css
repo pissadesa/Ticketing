@@ -1,0 +1,25 @@
+
+
+.divContenedorMain{
+    padding: 3%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5%;
+
+}
+
+.buttonPersonal{
+    margin-left: 2%;
+    margin-right: 2%;
+    min-width: 15%;
+}
+
+.labelTitulo{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+
+.divBorderSeccion{
+    border: 1px solid rgba(45, 87, 151, 0.3);
+}

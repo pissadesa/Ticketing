@@ -1,0 +1,34 @@
+<app-menu-lateral></app-menu-lateral>
+<div class="divContenedorPersonas">
+
+  <div class="divTitulo">  <h2><strong>{{tipoPersonaNombre}}</strong></h2> <button (click)="btnNuevo()" class="btnNuevaPersona" mat-raised-button color="primary">Nuevo</button></div>
+<br>
+  <table class="table table-striped">
+    <colgroup>
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 22%;">
+        <col span="1" style="width: 22%;">
+     </colgroup>
+    <tr>
+        <th  class="thNombre">Nombre</th>
+        <th>Municipio</th>
+        <th>Estado</th>
+        <th>Contacto</th>
+        <th>Detalle</th>
+    </tr>
+    <tbody>
+<tr *ngFor="let agente of arrayAgentes">
+            <td class="thIzquierda">{{agente.nombre}}</td>
+            <td>{{agente.municipio}}</td>
+            <td>{{agente.estado}}</td>
+            <td class="thIzquierda">{{agente.telefono}} <br>{{agente.correo}} </td>
+            <td><button (click)="btnActualizar(agente.id)"  mat-raised-button style="background-color: yellow">Actualizar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</div>

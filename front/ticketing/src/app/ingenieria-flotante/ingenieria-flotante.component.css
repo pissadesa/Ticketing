@@ -1,0 +1,61 @@
+
+.divContenedorFlotantes{
+    padding: 3%;
+    min-width: 94%;
+    max-width: 94%;
+    margin-left: 5%;
+}
+
+
+
+.btnMasiva{
+    margin-left: 2%;
+}
+
+
+.divbtn1{
+    min-width: 50%;
+    max-width: 50%;
+}
+
+
+.divbtn2{
+    min-width: 50%;
+    max-width: 50%;
+    text-align: right;
+}
+
+.divBotonesContenedor{
+    display: flex;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.btnCatalogo{
+    background-color: #5cb85c;
+    color: white;
+}
+
+.labelTitulosProyecto{
+    padding: 1%;
+    background-color: rgba(45, 87, 151, 0.1);
+    min-width: 100%;
+}
+
+.divMargin{
+    border: 1px solid rgba(0, 55, 112, 0.3);;
+}
+
+.titulosMargin{
+    padding: 1%;
+    margin-top: 0.5%;
+
+    max-width: 90%;
+    display: flex;
+}
+
+.divContenedor1{
+    min-width: 25%;
+    max-width: 25%;
+    margin-right: 4%;
+}

@@ -1,0 +1,47 @@
+
+
+.menuHorizontal{
+    padding-top: 2%;
+       max-width: 5%;
+       min-width: 5%;
+       max-height: 100%;
+       min-height: 100%;
+       background-color: #003770;;
+       position: fixed;
+   }
+   
+   .imgIconosmenu{
+       width: 30%;
+   }
+   
+   .divItemMenu{
+       text-align: center;
+   }
+   
+   .labelMenu{
+       font-size: 0.8vw;
+   }
+   
+   .btnLogOut{
+   color: white;
+     background-color: #003770;
+     border-radius: 5px;
+   }
+   
+   a{
+       color: white;
+   }
+
+   
+.my-toolbar {
+    text-align: right;
+    position: fixed;
+    top: 0;
+    z-index:100;
+    background-color: #003770;;
+  }
+
+  span{
+      background-color: blueviolet;
+      right: 0;
+  }
